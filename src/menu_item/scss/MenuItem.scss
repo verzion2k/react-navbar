@@ -11,6 +11,11 @@
 		display: block;
 		margin: 0 auto;
 	}
+	&__auth {
+		background-color: #b6ada4;
+		list-style-type: none;
+		text-align: center;
+	}
 	&__wrapper {
 		padding: 10px;
 	}

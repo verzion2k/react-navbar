@@ -6,11 +6,18 @@ export default class Menu extends Component {
 	render() {
 		return (
 			<ul className="menu">
-				<MenuItem />
-				<MenuItem />
-				<MenuItem />
-				<MenuItem />
-				<MenuItem />
+				{this.props.menuItems.map((item, index) => {
+					return (
+						<MenuItem
+							key={item.id}
+							name={item.name}
+							isDropdown={item.isDropdown}
+							isAuth={item.isAuth}
+							dropdownItems={item.dropdownItems}
+							isActive={item.isActive}
+						/>
+					);
+				})}
 			</ul>
 		);
 	}
