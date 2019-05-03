@@ -14,13 +14,13 @@ export default class Nav extends Component {
 
 		this.state = {
 			toggleMenu: false,
+			isActive: false,
 			menuItems: [
 				{
 					id: '1',
 					name: 'SZECHENYI UT',
 					isDropdown: true,
 					isAuth: false,
-					isActive: false,
 					dropdownItems: [
 						{
 							id: '11',
@@ -58,13 +58,11 @@ export default class Nav extends Component {
 					name: 'MAROSHEGY',
 					isDropdown: true,
 					isAuth: false,
-					isActive: false,
 					dropdownItems: [
 						{
 							id: '21',
 							name: 'LOREM IPSUM21',
 							isDropdown: true,
-							isActive: false,
 							subItems: [
 								{
 									id: '221',
@@ -97,7 +95,6 @@ export default class Nav extends Component {
 					name: 'BUDAI UT',
 					isDropdown: true,
 					isAuth: false,
-					isActive: false,
 					dropdownItems: [
 						{
 							id: '31',
@@ -113,7 +110,6 @@ export default class Nav extends Component {
 							id: '33',
 							name: 'LOREM IPSUM13',
 							isDropdown: true,
-							isActive: false,
 							subItems: [
 								{
 									id: '321',
@@ -136,7 +132,6 @@ export default class Nav extends Component {
 					name: 'OLAJFA OVODA',
 					isDropdown: true,
 					isAuth: false,
-					isActive: false,
 					dropdownItems: [
 						{
 							id: '41',
@@ -147,7 +142,6 @@ export default class Nav extends Component {
 							id: '42',
 							name: 'LOREM IPSUM321312',
 							isDropdown: true,
-							isActive: false,
 							subItems: [
 								{
 									id: '421',
@@ -175,7 +169,6 @@ export default class Nav extends Component {
 					name: 'TALENTUM ALTALANOS ISKOLA',
 					isDropdown: true,
 					isAuth: false,
-					isActive: false,
 					dropdownItems: [
 						{
 							id: '51',
@@ -186,7 +179,7 @@ export default class Nav extends Component {
 							id: '52',
 							name: 'LOREM IPSUM12dads',
 							isDropdown: true,
-							isActive: false,
+
 							subItems: [
 								{
 									id: '521',
@@ -214,7 +207,6 @@ export default class Nav extends Component {
 					name: 'BEJELNTKEZES',
 					isDropdown: false,
 					isAuth: true,
-					isActive: false,
 					dropdownItems: false
 				},
 				{
@@ -222,7 +214,6 @@ export default class Nav extends Component {
 					name: 'REGISZTRACIO',
 					isDropdown: false,
 					isAuth: true,
-					isActive: false,
 					dropdownItems: false
 				}
 			]
@@ -253,7 +244,7 @@ export default class Nav extends Component {
 				</header>
 				{toggleMenu && (
 					<div className="nav__menu">
-						<Menu menuItems={this.state.menuItems} />
+						<Menu menuItems={this.state.menuItems} isActive={this.state.isActive} />
 					</div>
 				)}
 			</main>

@@ -11,10 +11,11 @@ export default class Menu extends Component {
 						<MenuItem
 							key={item.id}
 							name={item.name}
+							item={item}
 							isDropdown={item.isDropdown}
 							isAuth={item.isAuth}
 							dropdownItems={item.dropdownItems}
-							isActive={item.isActive}
+							isActive={this.props.isActive}
 						/>
 					);
 				})}
