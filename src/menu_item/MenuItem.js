@@ -29,7 +29,7 @@ export default class MenuItem extends Component {
 	};
 
 	render() {
-		const { isDropdown, isAuth, name, dropdownItems, item } = this.props;
+		const { isDropdown, isAuth, name, dropdownItems } = this.props;
 		const { showDropdown, showSubItems } = this.state;
 
 		return (
@@ -44,7 +44,7 @@ export default class MenuItem extends Component {
 					{showDropdown &&
 						dropdownItems.map((item, index) => {
 							return (
-								<li onClick={showSubItems ? this.handleSubItems : null} key={item.id}>
+								<li onClick={item.isDropdown ? this.handleSubItems : undefined} key={item.id}>
 									{item.name}
 									{item.isDropdown && (
 										<React.Fragment>

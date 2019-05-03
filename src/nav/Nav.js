@@ -14,7 +14,6 @@ export default class Nav extends Component {
 
 		this.state = {
 			toggleMenu: false,
-			isActive: false,
 			menuItems: [
 				{
 					id: '1',
