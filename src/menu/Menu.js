@@ -14,6 +14,7 @@ export default class Menu extends Component {
 							isDropdown={item.isDropdown}
 							isAuth={item.isAuth}
 							dropdownItems={item.dropdownItems}
+							login={item.login}
 						/>
 					);
 				})}

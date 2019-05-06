@@ -23,12 +23,12 @@ export default class Nav extends Component {
 					dropdownItems: [
 						{
 							id: '11',
-							name: 'LOREM IPSUM11',
+							name: 'KEZDOLAP',
 							isDropdown: false
 						},
 						{
 							id: '12',
-							name: 'LOREM IPSUM12',
+							name: 'TUDNIVALOK',
 							isDropdown: true,
 							subItems: [
 								{
@@ -47,7 +47,7 @@ export default class Nav extends Component {
 						},
 						{
 							id: '13',
-							name: 'LOREM IPSUM13',
+							name: 'KOSZONTO',
 							isDropdown: false
 						}
 					]
@@ -204,16 +204,14 @@ export default class Nav extends Component {
 				{
 					id: '6',
 					name: 'BEJELNTKEZES',
-					isDropdown: false,
 					isAuth: true,
-					dropdownItems: false
+					login: true
 				},
 				{
 					id: '7',
 					name: 'REGISZTRACIO',
-					isDropdown: false,
 					isAuth: true,
-					dropdownItems: false
+					login: false
 				}
 			]
 		};
