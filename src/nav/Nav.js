@@ -224,9 +224,18 @@ export default class Nav extends Component {
 
 	handleDropdown = (e) => {
 		e.preventDefault();
+		const { menuItems } = this.state;
+		console.log(e.target.id);
 
-		this.setState({
-			showDropdown: !this.state.showDropdown
+		menuItems.map((data, index) => {
+			if (data[index] === e.target.id) {
+				console.log(data[index]);
+			} else {
+				console.log(data[index]);
+				this.setState({
+					showDropdown: !this.state.showDropdown
+				});
+			}
 		});
 	};
 

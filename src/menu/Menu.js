@@ -10,6 +10,7 @@ export default class Menu extends Component {
 					return (
 						<MenuItem
 							key={item.id}
+							id={item.id}
 							name={item.name}
 							isDropdown={item.isDropdown}
 							isAuth={item.isAuth}

@@ -5,7 +5,7 @@ import Input from '../input/Input';
 import MenuContext from '../menu_context/MenuContext';
 export default class MenuItem extends Component {
 	render() {
-		const { isDropdown, isAuth, name, dropdownItems, login } = this.props;
+		const { isDropdown, isAuth, name, dropdownItems, login, id } = this.props;
 		const { showDropdown, showSubItems, handleDropdown, handleSubItems } = this.context;
 
 		let menuItemClass = 'menu__item';
@@ -17,11 +17,10 @@ export default class MenuItem extends Component {
 			menuItemClass += ' menu__item--active';
 		}
 
-		console.log(this.context);
 		return (
 			<li className={menuItemClass}>
 				<div className="menu__item__wrapper">
-					<a className="menu__link" onClick={handleDropdown}>
+					<a className="menu__link" onClick={handleDropdown} id={id}>
 						{name}
 					</a>
 					{isDropdown && <Icon />}
