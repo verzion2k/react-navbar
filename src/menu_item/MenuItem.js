@@ -2,36 +2,11 @@ import React, { Component } from 'react';
 import './scss/MenuItem.scss';
 import Icon from '../icon/Icon';
 import Input from '../input/Input';
-
+import MenuContext from '../menu_context/MenuContext';
 export default class MenuItem extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			showDropdown: false,
-			showSubItems: false
-		};
-	}
-
-	handleDropdown = (e) => {
-		e.preventDefault();
-
-		this.setState({
-			showDropdown: !this.state.showDropdown
-		});
-	};
-
-	handleSubItems = (e) => {
-		e.preventDefault();
-
-		this.setState({
-			showSubItems: !this.state.showSubItems
-		});
-	};
-
 	render() {
 		const { isDropdown, isAuth, name, dropdownItems, login } = this.props;
-		const { showDropdown, showSubItems } = this.state;
+		const { showDropdown, showSubItems, handleDropdown, handleSubItems } = this.context;
 
 		let menuItemClass = 'menu__item';
 		if (isAuth && showDropdown) {
@@ -42,10 +17,11 @@ export default class MenuItem extends Component {
 			menuItemClass += ' menu__item--active';
 		}
 
+		console.log(this.context);
 		return (
 			<li className={menuItemClass}>
 				<div className="menu__item__wrapper">
-					<a href className="menu__link" onClick={this.handleDropdown}>
+					<a className="menu__link" onClick={handleDropdown}>
 						{name}
 					</a>
 					{isDropdown && <Icon />}
@@ -65,7 +41,7 @@ export default class MenuItem extends Component {
 											'menu__item__dropdown'
 										)
 									}
-									onClick={item.isDropdown ? this.handleSubItems : undefined}
+									onClick={item.isDropdown ? handleSubItems : undefined}
 									key={item.id}
 								>
 									{item.name}
@@ -89,3 +65,5 @@ export default class MenuItem extends Component {
 		);
 	}
 }
+
+MenuItem.contextType = MenuContext;

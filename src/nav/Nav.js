@@ -5,6 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Menu from '../menu/Menu';
+import MenuContext from '../menu_context/MenuContext';
 
 library.add(faBars);
 
@@ -14,6 +15,10 @@ export default class Nav extends Component {
 
 		this.state = {
 			toggleMenu: false,
+			showDropdown: false,
+			showSubItems: false,
+			handleDropdown: this.handleDropdown,
+			handleSubItems: this.handleSubItems,
 			menuItems: [
 				{
 					id: '1',
@@ -217,6 +222,22 @@ export default class Nav extends Component {
 		};
 	}
 
+	handleDropdown = (e) => {
+		e.preventDefault();
+
+		this.setState({
+			showDropdown: !this.state.showDropdown
+		});
+	};
+
+	handleSubItems = (e) => {
+		e.preventDefault();
+
+		this.setState({
+			showSubItems: !this.state.showSubItems
+		});
+	};
+
 	handleOnToggle = () => {
 		const { toggleMenu } = this.state;
 		this.setState({
@@ -227,24 +248,26 @@ export default class Nav extends Component {
 	render() {
 		const { toggleMenu } = this.state;
 		return (
-			<main className="nav">
-				<header className="nav__header">
-					<div className="nav__left">
-						<img src={logo} alt="logo" className="nav__logo" />
-					</div>
-					<div className="nav__main">
-						<h1 className="nav__title">Székesfehérvári Református Egyházközség</h1>
-					</div>
-					<div className="nav__right" onClick={this.handleOnToggle}>
-						<FontAwesomeIcon icon={faBars} className="nav__collapse__button" />
-					</div>
-				</header>
-				{toggleMenu && (
-					<div className="nav__menu">
-						<Menu menuItems={this.state.menuItems} isActive={this.state.isActive} />
-					</div>
-				)}
-			</main>
+			<MenuContext.Provider value={this.state}>
+				<main className="nav">
+					<header className="nav__header">
+						<div className="nav__left">
+							<img src={logo} alt="logo" className="nav__logo" />
+						</div>
+						<div className="nav__main">
+							<h1 className="nav__title">Székesfehérvári Református Egyházközség</h1>
+						</div>
+						<div className="nav__right" onClick={this.handleOnToggle}>
+							<FontAwesomeIcon icon={faBars} className="nav__collapse__button" />
+						</div>
+					</header>
+					{toggleMenu && (
+						<div className="nav__menu">
+							<Menu menuItems={this.state.menuItems} />
+						</div>
+					)}
+				</main>
+			</MenuContext.Provider>
 		);
 	}
 }
