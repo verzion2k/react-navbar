@@ -21,10 +21,11 @@ export default class Nav extends Component {
 			handleSubItems: this.handleSubItems,
 			menuItems: [
 				{
-					id: '1',
+					id: '0',
 					name: 'SZECHENYI UT',
 					isDropdown: true,
 					isAuth: false,
+					selected: false,
 					dropdownItems: [
 						{
 							id: '11',
@@ -35,6 +36,7 @@ export default class Nav extends Component {
 							id: '12',
 							name: 'TUDNIVALOK',
 							isDropdown: true,
+							selected: false,
 							subItems: [
 								{
 									id: '121',
@@ -58,15 +60,17 @@ export default class Nav extends Component {
 					]
 				},
 				{
-					id: '2',
+					id: '1',
 					name: 'MAROSHEGY',
 					isDropdown: true,
 					isAuth: false,
+					selected: false,
 					dropdownItems: [
 						{
 							id: '21',
 							name: 'LOREM IPSUM21',
 							isDropdown: true,
+							selected: false,
 							subItems: [
 								{
 									id: '221',
@@ -95,10 +99,11 @@ export default class Nav extends Component {
 					]
 				},
 				{
-					id: '3',
+					id: '2',
 					name: 'BUDAI UT',
 					isDropdown: true,
 					isAuth: false,
+					selected: false,
 					dropdownItems: [
 						{
 							id: '31',
@@ -114,6 +119,7 @@ export default class Nav extends Component {
 							id: '33',
 							name: 'LOREM IPSUM13',
 							isDropdown: true,
+							selected: false,
 							subItems: [
 								{
 									id: '321',
@@ -132,10 +138,11 @@ export default class Nav extends Component {
 					]
 				},
 				{
-					id: '4',
+					id: '3',
 					name: 'OLAJFA OVODA',
 					isDropdown: true,
 					isAuth: false,
+					selected: false,
 					dropdownItems: [
 						{
 							id: '41',
@@ -146,6 +153,7 @@ export default class Nav extends Component {
 							id: '42',
 							name: 'LOREM IPSUM321312',
 							isDropdown: true,
+							selected: false,
 							subItems: [
 								{
 									id: '421',
@@ -169,10 +177,11 @@ export default class Nav extends Component {
 					]
 				},
 				{
-					id: '5',
+					id: '4',
 					name: 'TALENTUM ALTALANOS ISKOLA',
 					isDropdown: true,
 					isAuth: false,
+					selected: false,
 					dropdownItems: [
 						{
 							id: '51',
@@ -183,7 +192,7 @@ export default class Nav extends Component {
 							id: '52',
 							name: 'LOREM IPSUM12dads',
 							isDropdown: true,
-
+							selected: false,
 							subItems: [
 								{
 									id: '521',
@@ -207,35 +216,44 @@ export default class Nav extends Component {
 					]
 				},
 				{
-					id: '6',
+					id: '5',
 					name: 'BEJELNTKEZES',
 					isAuth: true,
-					login: true
+					login: true,
+					selected: false
 				},
 				{
-					id: '7',
+					id: '6',
 					name: 'REGISZTRACIO',
 					isAuth: true,
+					selected: false,
 					login: false
 				}
 			]
 		};
 	}
 
+	onTitleChange(id, title) {
+		var data = [ ...this.state.data ];
+		var index = data.findIndex((obj) => obj.id === id);
+		data[index].title = title;
+		this.setState({ data });
+	}
+
 	handleDropdown = (e) => {
 		e.preventDefault();
-		const { menuItems } = this.state;
-		console.log(e.target.id);
 
-		menuItems.map((data, index) => {
-			if (data[index] === e.target.id) {
-				console.log(data[index]);
-			} else {
-				console.log(data[index]);
-				this.setState({
-					showDropdown: !this.state.showDropdown
-				});
-			}
+		const items = [ ...this.state.menuItems ];
+		let key = e.currentTarget.id;
+
+		if (items[key].selected === true) {
+			items[key].selected = false;
+		} else {
+			items[key].selected = true;
+		}
+
+		this.setState({
+			items
 		});
 	};
 

@@ -5,30 +5,30 @@ import Input from '../input/Input';
 import MenuContext from '../menu_context/MenuContext';
 export default class MenuItem extends Component {
 	render() {
-		const { isDropdown, isAuth, name, dropdownItems, login, id } = this.props;
+		const { isDropdown, isAuth, name, dropdownItems, login, id, selected } = this.props;
 		const { showDropdown, showSubItems, handleDropdown, handleSubItems } = this.context;
 
 		let menuItemClass = 'menu__item';
-		if (isAuth && showDropdown) {
+		if (isAuth && selected) {
 			menuItemClass += ' menu__item__auth--active';
 		} else if (isAuth) {
 			menuItemClass += ' menu__item__auth';
-		} else if (showDropdown) {
+		} else if (selected) {
 			menuItemClass += ' menu__item--active';
 		}
 
 		return (
 			<li className={menuItemClass}>
 				<div className="menu__item__wrapper">
-					<a className="menu__link" onClick={handleDropdown} id={id}>
+					<a className="menu__link" onClick={handleDropdown} id={id} selected={selected}>
 						{name}
 					</a>
 					{isDropdown && <Icon />}
 				</div>
 				<ul>
-					{isAuth && showDropdown && <Input login={login} />}
+					{isAuth && selected && <Input login={login} />}
 
-					{showDropdown &&
+					{selected &&
 						isDropdown &&
 						dropdownItems.map((item, index) => {
 							return (
