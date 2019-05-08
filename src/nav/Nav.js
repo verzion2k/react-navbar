@@ -234,17 +234,28 @@ export default class Nav extends Component {
 	}
 
 	handleDropdown = (e) => {
+		// Megkell vizsgalni, hogy milyen szinten van az amire clickeltunk, a parent elementeket true erteken hagyni, az osszestobbit falsera allitani. Ha nyitva van egy menu es atkattintunk egy masikra azt allitsa truera es minden mast falsera
+
 		e.preventDefault();
 
 		const items = [ ...this.state.menuItems ];
 		const targetKey = e.currentTarget.id;
-
-		// Megkell vizsgalni, hogy milyen szinten van az amire clickeltunk, a parent elementeket true erteken hagyni, az osszestobbit falsera allitani. Ha nyitva van egy menu es atkattintunk egy masikra azt allitsa truera es minden mast falsera
-
 		const selectedItems = items.map((data, i) => items[i].selected);
 		const indices = selectedItems.reduce((out, bool, index) => (bool ? out.concat(index) : out), []);
+
+		console.log(selectedItems);
+
+		for (var i = 0; i < selectedItems.length; i++) {
+			let index = selectedItems.indexOf(true);
+			if (index !== -1) {
+				selectedItems[index] = false;
+			}
+		}
+
+		const includesTrue = indices.includes();
 		console.log(selectedItems);
 		console.log(indices);
+		console.log(includesTrue);
 
 		if (items[targetKey].selected) {
 			console.log('1st statement');
