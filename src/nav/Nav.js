@@ -233,23 +233,28 @@ export default class Nav extends Component {
 		};
 	}
 
-	onTitleChange(id, title) {
-		var data = [ ...this.state.data ];
-		var index = data.findIndex((obj) => obj.id === id);
-		data[index].title = title;
-		this.setState({ data });
-	}
-
 	handleDropdown = (e) => {
 		e.preventDefault();
 
 		const items = [ ...this.state.menuItems ];
-		let key = e.currentTarget.id;
+		const targetKey = e.currentTarget.id;
 
-		if (items[key].selected === true) {
-			items[key].selected = false;
-		} else {
-			items[key].selected = true;
+		// Megkell vizsgalni, hogy milyen szinten van az amire clickeltunk, a parent elementeket true erteken hagyni, az osszestobbit falsera allitani. Ha nyitva van egy menu es atkattintunk egy masikra azt allitsa truera es minden mast falsera
+
+		const selectedItems = items.map((data, i) => items[i].selected);
+		const indices = selectedItems.reduce((out, bool, index) => (bool ? out.concat(index) : out), []);
+		console.log(selectedItems);
+		console.log(indices);
+
+		if (items[targetKey].selected) {
+			console.log('1st statement');
+			items[targetKey].selected = false;
+		} else if (selectedItems && !items[targetKey].selected) {
+			console.log('2nd statement');
+			items[targetKey].selected = true;
+		} else if (!items[targetKey].selected) {
+			console.log('3rd statement');
+			items[targetKey].selected = true;
 		}
 
 		this.setState({
