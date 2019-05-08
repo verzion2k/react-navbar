@@ -252,20 +252,19 @@ export default class Nav extends Component {
 			}
 		}
 
-		const includesTrue = indices.includes();
 		console.log(selectedItems);
 		console.log(indices);
-		console.log(includesTrue);
 
 		if (items[targetKey].selected) {
 			console.log('1st statement');
 			items[targetKey].selected = false;
-		} else if (selectedItems && !items[targetKey].selected) {
-			console.log('2nd statement');
-			items[targetKey].selected = true;
 		} else if (!items[targetKey].selected) {
-			console.log('3rd statement');
+			console.log('2nd statement');
+			selectedItems.fill(false);
 			items[targetKey].selected = true;
+			// } else if (!items[targetKey].selected) {
+			// 	console.log('3rd statement');
+			// 	items[targetKey].selected = true;
 		}
 
 		this.setState({
