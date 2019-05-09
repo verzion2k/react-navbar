@@ -30,6 +30,7 @@ export default class Nav extends Component {
 						{
 							id: '11',
 							name: 'KEZDOLAP',
+							selected: false,
 							isDropdown: false
 						},
 						{
@@ -55,6 +56,7 @@ export default class Nav extends Component {
 						{
 							id: '13',
 							name: 'KOSZONTO',
+							selected: false,
 							isDropdown: false
 						}
 					]
@@ -89,11 +91,13 @@ export default class Nav extends Component {
 						{
 							id: '22',
 							name: 'LOREM IPSUM22',
+							selected: false,
 							isDropdown: false
 						},
 						{
 							id: '23',
 							name: 'LOREM IPSUM23',
+							selected: false,
 							isDropdown: false
 						}
 					]
@@ -108,11 +112,13 @@ export default class Nav extends Component {
 						{
 							id: '31',
 							name: 'LOREM IPSUM11',
+							selected: false,
 							isDropdown: false
 						},
 						{
 							id: '32',
 							name: 'LOREM IPSUM12',
+							selected: false,
 							isDropdown: false
 						},
 						{
@@ -147,6 +153,7 @@ export default class Nav extends Component {
 						{
 							id: '41',
 							name: 'LOREM IPSUM13211',
+							selected: false,
 							isDropdown: false
 						},
 						{
@@ -172,6 +179,7 @@ export default class Nav extends Component {
 						{
 							id: '43',
 							name: 'LOREM IP213213SUM13',
+							selected: false,
 							isDropdown: false
 						}
 					]
@@ -186,6 +194,7 @@ export default class Nav extends Component {
 						{
 							id: '51',
 							name: 'LOREM IPSUM11zea',
+							selected: false,
 							isDropdown: false
 						},
 						{
@@ -211,6 +220,7 @@ export default class Nav extends Component {
 						{
 							id: '53',
 							name: 'LOREM IPSUM13dsadsa',
+							selected: false,
 							isDropdown: false
 						}
 					]
@@ -240,31 +250,27 @@ export default class Nav extends Component {
 
 		const items = [ ...this.state.menuItems ];
 		const targetKey = e.currentTarget.id;
-		const selectedItems = items.map((data, i) => items[i].selected);
-		const indices = selectedItems.reduce((out, bool, index) => (bool ? out.concat(index) : out), []);
+		console.log(targetKey);
 
-		console.log(selectedItems);
+		// items.map((data, i) => {
+		// 	if (items[i].selected) {
+		// 		items[i].selected = false;
+		// 		console.log('1st statement');
+		// 	}
+		// });
 
-		for (var i = 0; i < selectedItems.length; i++) {
-			let index = selectedItems.indexOf(true);
-			if (index !== -1) {
-				selectedItems[index] = false;
-			}
-		}
+		// if (!items[targetKey].selected) {
+		// 	items[targetKey].selected = true;
+		// 	console.log('2nd statement');
+		// } else if (items[targetKey].selected) {
+		// 	console.log('3rd statement');
+		// 	items[targetKey].selected = false;
+		// }
 
-		console.log(selectedItems);
-		console.log(indices);
-
-		if (items[targetKey].selected) {
-			console.log('1st statement');
-			items[targetKey].selected = false;
-		} else if (!items[targetKey].selected) {
-			console.log('2nd statement');
-			selectedItems.fill(false);
+		if (!items[targetKey].selected) {
 			items[targetKey].selected = true;
-			// } else if (!items[targetKey].selected) {
-			// 	console.log('3rd statement');
-			// 	items[targetKey].selected = true;
+		} else if (items[targetKey].selected) {
+			items[targetKey].selected = false;
 		}
 
 		this.setState({

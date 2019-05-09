@@ -6,7 +6,7 @@ import MenuContext from '../menu_context/MenuContext';
 export default class MenuItem extends Component {
 	render() {
 		const { isDropdown, isAuth, name, dropdownItems, login, id, selected } = this.props;
-		const { showDropdown, showSubItems, handleDropdown, handleSubItems } = this.context;
+		const { showSubItems, handleDropdown, handleSubItems } = this.context;
 
 		let menuItemClass = 'menu__item';
 		if (isAuth && selected) {
@@ -42,6 +42,8 @@ export default class MenuItem extends Component {
 									}
 									onClick={item.isDropdown ? handleSubItems : undefined}
 									key={item.id}
+									selected={item.selected}
+									id={item.id}
 								>
 									{item.name}
 									{item.isDropdown && (
