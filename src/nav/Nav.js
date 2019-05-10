@@ -261,7 +261,7 @@ export default class Nav extends Component {
 
         const items = [...this.state.menuItems];
         const targetKey = e.currentTarget.id;
-        
+
         // const dropdownArray = items[targetKey].dropdownItems.map((value) => value.id);
         // console.log(dropdownArray);
 
@@ -286,6 +286,7 @@ export default class Nav extends Component {
 
     handleOnToggle = () => {
         const {toggleMenu} = this.state;
+
         this.setState({
             toggleMenu: !toggleMenu
         });
@@ -294,6 +295,7 @@ export default class Nav extends Component {
     render() {
         const {toggleMenu, width} = this.state;
         const isMobile = width < 1024;
+
         return (
             <MenuContext.Provider value={this.state}>
                 {isMobile ? (

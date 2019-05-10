@@ -9,6 +9,8 @@ export default class MenuItem extends Component {
         const {isDropdown, isAuth, name, dropdownItems, login, id, selected} = this.props;
         const {showSubItems, handleDropdown, handleSubItems, width} = this.context;
 
+        const isMobile = width < 1024;
+
         let menuItemClass = 'menu__item';
         if (isAuth && selected) {
             menuItemClass += ' menu__item__auth--active';
@@ -19,12 +21,12 @@ export default class MenuItem extends Component {
         }
 
         return (
-            <li className={menuItemClass}>
+            <li className={menuItemClass} onMouseEnter={!isMobile ? handleDropdown : undefined}  id={id} selected={selected}>
                 <div className={isAuth ? 'menu__item__wrapper--auth' : 'menu__item__wrapper'}>
-                    <a className="menu__link" onClick={!width ? handleDropdown : undefined} onMouseOver={width ? handleDropdown : undefined} id={id} selected={selected}>
+                    <a className="menu__link" onClick={isMobile ? handleDropdown : undefined} id={id} selected={selected}>
                         {name}
                     </a>
-                    {isDropdown && width && <Icon/>}
+                    {isDropdown && !isMobile && <Icon/>}
                 </div>
                 <ul>
                     {isAuth && selected && <Input login={login}/>}
@@ -41,8 +43,8 @@ export default class MenuItem extends Component {
                                         'menu__item__dropdown'
                                     )
                                 }
-                                onClick={item.isDropdown && !width ? handleSubItems : undefined}
-                                onMouseOver={width ? undefined : undefined}
+                                onClick={item.isDropdown && isMobile ? handleSubItems : undefined}
+                                onMouseOver={!isMobile ? undefined : undefined}
                                 key={item.id}
                                 selected={item.selected}
                                 id={item.id}

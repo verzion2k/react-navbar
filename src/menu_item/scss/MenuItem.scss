@@ -28,6 +28,7 @@
     font-size: 13px;
     font-weight: 400;
     padding: 10px;
+    list-style-type: none;
   }
 
   &__dropdown--active {
@@ -102,7 +103,7 @@
       z-index: 1;
     }
 
-    &:last-child:after{
+    &:last-child:after {
       display: none;
     }
   }
