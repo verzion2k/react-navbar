@@ -3,6 +3,7 @@
 	-moz-box-shadow: 0px 5px 14px 0px rgba(64, 64, 64, 0.4);
 	box-shadow: 0px 5px 14px 0px rgba(64, 64, 64, 0.4);
 	&__header {
+		position: relative;
 		padding: 15px;
 		display: flex;
 		flex-flow: row;
@@ -12,17 +13,11 @@
 	&__menu {
 		background-color: #97897e;
 	}
-	&__left {
-		width: 40px;
-		height: 40px;
-	}
 	&__right {
 		width: 40px;
 		height: 40px;
 		display: flex;
 		align-items: center;
-	}
-	&__main {
 	}
 	&__logo {
 		width: 40px;
@@ -39,5 +34,30 @@
 	&__collapse__button {
 		font-size: 30px;
 		color: #97897e;
+	}
+}
+
+@media (min-width: 1024px) {
+	.nav {
+		&__logo {
+			position: absolute;
+			top: 0;
+			left: 3%;
+			height: auto;
+			width: 80px;
+		}
+		&__right {
+			display: none;
+		}
+		&__menu {
+			background-color: transparent;
+			margin-left: 22px;
+		}
+		&__title {
+			font-size: 20px;
+			line-height: 20px;
+			font-weight: 500;
+			padding-bottom: 5px;
+		}
 	}
 }
