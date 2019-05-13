@@ -41,17 +41,17 @@
 	.nav {
 		&__logo {
 			position: absolute;
-			top: 0%;
-			left: 3%;
+			top: 10%;
+			left: 10px;
 			height: auto;
-			width: 129px;
+			width: 100px;
 		}
 		&__right {
 			display: none;
 		}
 		&__menu {
 			background-color: transparent;
-			margin-left: 140px;
+			margin-left: 90px;
 		}
 		&__main {
 			width: 100%;

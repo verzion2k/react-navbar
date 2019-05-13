@@ -28,7 +28,7 @@ export default class MenuItem extends Component {
                        selected={selected}>
                         {name}
                     </a>
-                    {isDropdown && !isMobile && <Icon/>}
+                    {isDropdown && <Icon/>}
                 </div>
                 <ul className='menu__item__list'>
                     {isAuth && selected && <Input login={login}/>}

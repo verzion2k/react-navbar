@@ -68,7 +68,7 @@
 
 @media (min-width: 1024px) {
   .menu__item {
-    flex: 0 0 15%;
+    flex: 0 0 13%;
 
     &--active {
       background-color: #fff;
@@ -81,7 +81,6 @@
     &__auth,
     &__auth--active {
       cursor: pointer;
-      text-align: right;
       background-color: transparent;
     }
 

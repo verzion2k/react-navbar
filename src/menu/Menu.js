@@ -9,13 +9,10 @@ export default class Menu extends Component {
         const authMenu = menuItems.filter(auth => {
             return auth.isAuth === true;
         });
-        console.log(authMenu);
 
         const menu = menuItems.filter(item => {
             return item.isAuth === false;
         });
-
-        console.log(menu);
 
         return (
             <React.Fragment>

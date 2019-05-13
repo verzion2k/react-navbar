@@ -18,8 +18,12 @@
 	.menu {
 		display: flex;
 		flex-flow: row wrap;
+		&__auth {
+			display: flex;
+			justify-content: flex-end;
+		}
 		&__link {
-			font-size: 12px;
+			font-size: 11px;
 			color: #000;
 		}
 		&__icon {
