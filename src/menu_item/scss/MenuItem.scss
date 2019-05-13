@@ -109,14 +109,11 @@
       z-index: 1;
     }
 
-    &:last-child:after {
-      display: none;
-    }
-
     &--active &__list,
     &__auth--active &__list {
       position: absolute;
-      top: 107%;
+      top: 100%;
+      width: max-content;
       text-align: left;
       background-color: #fff;
       z-index: 99;
@@ -125,8 +122,8 @@
 
     &__sub--wrapper {
       position: absolute;
-      right: -57%;
-      top: 32%;
+      left: 100%;
+      top: 0%;
       background-color: rgb(237, 237, 237);
       list-style-type: none;
     }
@@ -137,6 +134,7 @@
 
     &__dropdown--active {
       background-color: rgb(237, 237, 237);
+      position: relative;
     }
   }
 }

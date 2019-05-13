@@ -39,6 +39,9 @@
 
 @media (min-width: 1024px) {
 	.nav {
+		&__header {
+			padding: 15px 15px 0;
+		}
 		&__logo {
 			position: absolute;
 			top: 10%;
