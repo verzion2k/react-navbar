@@ -6,10 +6,22 @@ export default class Menu extends Component {
     render() {
         const {menuItems} = this.props;
 
+        const authMenu = menuItems.filter(auth => {
+            return auth.isAuth === true;
+        });
+        console.log(authMenu);
+
+        const menu = menuItems.filter(item => {
+            return item.isAuth === false;
+        });
+
+        console.log(menu);
+
         return (
-            <ul className='menu'>
-                {menuItems.map((item) => {
-                    return (
+            <React.Fragment>
+                <ul className='menu'>
+                    {menu.map((item) => {
+                        return (
                             <MenuItem
                                 key={item.id}
                                 id={item.id}
@@ -20,9 +32,27 @@ export default class Menu extends Component {
                                 isDropdown={item.isDropdown}
                                 dropdownItems={item.dropdownItems}
                             />
-                    );
-                })}
-            </ul>
+                        )
+
+                    })}
+                </ul>
+
+                <ul className='menu__auth'>
+                    {authMenu.map((item) => {
+                        return (
+                            <MenuItem
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                isAuth={item.isAuth}
+                                login={item.login}
+                                selected={item.selected}
+                            />
+                        )
+
+                    })}
+                </ul>
+            </React.Fragment>
         )
 
     }

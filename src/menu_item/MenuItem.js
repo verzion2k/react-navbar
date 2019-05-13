@@ -21,9 +21,11 @@ export default class MenuItem extends Component {
         }
 
         return (
-            <li className={menuItemClass} onMouseEnter={!isMobile ? handleDropdown : undefined}  id={id} selected={selected}>
+            <li className={menuItemClass} onMouseEnter={!isMobile ? handleDropdown : undefined}
+                onMouseLeave={!isMobile ? handleDropdown : undefined} id={id} selected={selected}>
                 <div className={isAuth ? 'menu__item__wrapper--auth' : 'menu__item__wrapper'}>
-                    <a className="menu__link" onClick={isMobile ? handleDropdown : undefined} id={id} selected={selected}>
+                    <a className="menu__link" onClick={isMobile ? handleDropdown : undefined} id={id}
+                       selected={selected}>
                         {name}
                     </a>
                     {isDropdown && !isMobile && <Icon/>}
@@ -43,25 +45,30 @@ export default class MenuItem extends Component {
                                         'menu__item__dropdown'
                                     )
                                 }
-                                onClick={item.isDropdown && isMobile ? handleSubItems : undefined}
-                                onMouseOver={!isMobile ? undefined : undefined}
+                                onClick={item.isDropdown && !isMobile ? handleSubItems : undefined}
                                 key={item.id}
                                 selected={item.selected}
                                 id={item.id}
                             >
-                                {item.name}
-                                {item.isDropdown && (
-                                    <React.Fragment>
-                                        <Icon/>
-                                        {showSubItems && (
-                                            <ul>
-                                                <li className="menu__item__sub">{item.subItems['0'].name}</li>
-                                                <li className="menu__item__sub">{item.subItems['1'].name}</li>
-                                                <li className="menu__item__sub">{item.subItems['2'].name}</li>
-                                            </ul>
+                                <a className="menu__link"
+                                   onMouseEnter={!isMobile ? handleSubItems : undefined}
+                                   onMouseLeave={!isMobile ? handleSubItems : undefined}>{item.name}</a>
+
+                                {item.isDropdown && <Icon/>}
+
+                                {showSubItems && (
+                                    <ul className='menu__item__sub--wrapper'>
+                                        {item.subItems && (
+                                            item.subItems.map(item => {
+                                                return (
+                                                    <li className="menu__item__sub">{item.name}</li>
+                                                );
+
+                                            })
                                         )}
-                                    </React.Fragment>
+                                    </ul>
                                 )}
+
                             </li>
                         );
                     })}

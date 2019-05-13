@@ -262,9 +262,6 @@ export default class Nav extends Component {
         const items = [...this.state.menuItems];
         const targetKey = e.currentTarget.id;
 
-        // const dropdownArray = items[targetKey].dropdownItems.map((value) => value.id);
-        // console.log(dropdownArray);
-
         if (!items[targetKey].selected) {
             items[targetKey].selected = true;
         } else {
@@ -285,7 +282,7 @@ export default class Nav extends Component {
     };
 
     handleOnToggle = () => {
-        const {toggleMenu, width} = this.state;
+        const {toggleMenu} = this.state;
 
         this.setState({
             toggleMenu: !toggleMenu
