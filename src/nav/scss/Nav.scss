@@ -19,10 +19,10 @@
 		display: flex;
 		align-items: center;
 	}
-	&__logo {
-		width: 40px;
-		height: 40px;
-	}
+	//&__logo {
+	//	width: 40px;
+	//	height: 40px;
+	//}
 	&__title {
 		padding-left: 10px;
 		text-transform: uppercase;
@@ -44,17 +44,17 @@
 		}
 		&__logo {
 			position: absolute;
-			top: 10%;
-			left: 10px;
-			height: auto;
-			width: 100px;
+			top: 8%;
+			left: 4%;
+			max-height: 500px;
+			max-width: 500px;
 		}
 		&__right {
 			display: none;
 		}
 		&__menu {
 			background-color: transparent;
-			margin-left: 100px;
+			margin-left: 140px;
 		}
 		&__main {
 			width: 100%;

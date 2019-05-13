@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './scss/Nav.scss';
-import logo from './icons/logo.png';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
@@ -299,7 +298,7 @@ export default class Nav extends Component {
                     <main className="nav">
                         <header className="nav__header">
                             <div className="nav__left">
-                                <img src={logo} alt="logo" className="nav__logo"/>
+                                <img src="http://www.albaref.hu/image/105x112/259.png" alt="logo" className="nav__logo"/>
                             </div>
 
                             <div className="nav__main">
@@ -320,7 +319,7 @@ export default class Nav extends Component {
                     <main className="nav">
                         <header className="nav__header">
                             <div className="nav__left">
-                                <img src={logo} alt="logo" className="nav__logo"/>
+                                <img src="http://www.albaref.hu/image/105x112/259.png" alt="logo" className="nav__logo"/>
                             </div>
 
                             <div className="nav__main">
