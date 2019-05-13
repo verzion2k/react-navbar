@@ -46,13 +46,13 @@ export default class MenuItem extends Component {
                                     )
                                 }
                                 onClick={item.isDropdown && !isMobile ? handleSubItems : undefined}
+                                onMouseEnter={item.isDropdown && !isMobile  ? handleSubItems : undefined}
+                                onMouseLeave={item.isDropdown && !isMobile  ? handleSubItems : undefined}
                                 key={item.id}
                                 selected={item.selected}
                                 id={item.id}
                             >
-                                <a className="menu__link"
-                                   onMouseEnter={!isMobile ? handleSubItems : undefined}
-                                   onMouseLeave={!isMobile ? handleSubItems : undefined}>{item.name}</a>
+                                <a className="menu__link">{item.name}</a>
 
                                 {item.isDropdown && <Icon/>}
 
