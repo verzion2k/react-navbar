@@ -110,6 +110,10 @@
       z-index: 1;
     }
 
+    &:last-of-type &__wrapper:after {
+      display: none;
+    }
+
     &--active &__list,
     &__auth--active &__list {
       position: absolute;
