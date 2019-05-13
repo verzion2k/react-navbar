@@ -80,6 +80,7 @@
 
     &__auth,
     &__auth--active {
+      position: initial;
       cursor: pointer;
       background-color: transparent;
     }
@@ -112,12 +113,16 @@
     &--active &__list,
     &__auth--active &__list {
       position: absolute;
-      top: 100%;
+      left: 3%;
       width: max-content;
       text-align: left;
       background-color: #fff;
       z-index: 99;
       box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    }
+
+    &--active &__list:first-child, &__auth--active &__list:first-child {
+      left: 22%;
     }
 
     &__sub--wrapper {

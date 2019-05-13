@@ -35,6 +35,7 @@ export default class Menu extends Component {
                 </ul>
 
                 <ul className='menu__auth'>
+                    <div>
                     {authMenu.map((item) => {
                         return (
                             <MenuItem
@@ -48,6 +49,7 @@ export default class Menu extends Component {
                         )
 
                     })}
+                    </div>
                 </ul>
             </React.Fragment>
         )

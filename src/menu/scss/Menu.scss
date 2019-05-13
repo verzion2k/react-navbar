@@ -22,6 +22,10 @@
 			display: flex;
 			justify-content: flex-end;
 		}
+		&__auth div {
+			display: flex;
+			position: relative;
+		}
 		&__link {
 			font-size: 11px;
 			color: #000;
