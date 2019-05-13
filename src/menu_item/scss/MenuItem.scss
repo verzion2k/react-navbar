@@ -106,5 +106,10 @@
     &:last-child:after {
       display: none;
     }
+    &--active &__list,
+    &__auth--active &__list {
+      position: absolute;
+      background-color: lightgray;
+    }
   }
 }

@@ -285,7 +285,7 @@ export default class Nav extends Component {
     };
 
     handleOnToggle = () => {
-        const {toggleMenu} = this.state;
+        const {toggleMenu, width} = this.state;
 
         this.setState({
             toggleMenu: !toggleMenu
@@ -313,7 +313,7 @@ export default class Nav extends Component {
                                 <FontAwesomeIcon icon={faBars} className="nav__collapse__button"/>
                             </div>
                         </header>
-                        {toggleMenu && (
+                        {toggleMenu && isMobile && (
                             <div className="nav__menu">
                                 <Menu menuItems={this.state.menuItems}/>
                             </div>
@@ -337,11 +337,6 @@ export default class Nav extends Component {
                                 <FontAwesomeIcon icon={faBars} className="nav__collapse__button"/>
                             </div>
                         </header>
-                        {toggleMenu && (
-                            <div className="nav__menu">
-                                <Menu menuItems={this.state.menuItems}/>
-                            </div>
-                        )}
                     </main>
                 )}
             </MenuContext.Provider>
