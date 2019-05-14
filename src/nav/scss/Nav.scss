@@ -42,6 +42,10 @@
 	&__socials:first-of-type {
 		margin-right: 10px;
 	}
+	&__socials,
+	&__logo {
+		cursor: pointer;
+	}
 }
 
 @media (min-width: 768px) {

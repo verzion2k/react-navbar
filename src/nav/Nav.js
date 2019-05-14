@@ -260,6 +260,8 @@ export default class Nav extends Component {
 		const items = [ ...this.state.menuItems ];
 		const targetKey = e.currentTarget.id;
 
+		// let subItems = items[targetKey].dropdownItems.filter((dropdown) => dropdown.isDropdown === true)[0].selected;
+
 		if (!items[targetKey].selected) {
 			items[targetKey].selected = true;
 		} else {
@@ -274,9 +276,14 @@ export default class Nav extends Component {
 	handleSubItems = (e) => {
 		e.preventDefault();
 
-		this.setState({
-			showSubItems: !this.state.showSubItems
-		});
+		const { menuItems } = this.state;
+
+		const subItem = menuItems.map((obj) => obj.dropdownItems && obj.dropdownItems);
+		const moreDeep = subItem.map((obj, index) => console.log(obj));
+		console.log(subItem);
+
+		const targetKey = e.currentTarget.id;
+		console.log(targetKey);
 	};
 
 	handleOnToggle = () => {

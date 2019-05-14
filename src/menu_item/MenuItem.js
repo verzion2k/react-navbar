@@ -53,7 +53,7 @@ export default class MenuItem extends Component {
 											'menu__item__dropdown'
 										)
 									}
-									onClick={item.isDropdown && !isMobile ? handleSubItems : undefined}
+									onClick={item.isDropdown && isMobile ? handleSubItems : undefined}
 									onMouseEnter={item.isDropdown && !isMobile ? handleSubItems : undefined}
 									onMouseLeave={item.isDropdown && !isMobile ? handleSubItems : undefined}
 									key={item.id}
