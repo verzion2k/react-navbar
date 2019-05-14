@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import './scss/Menu.scss';
 import MenuItem from '../menu_item/MenuItem';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserTie, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import MenuContext from '../menu_context/MenuContext';
 
+library.add(faUserTie);
+library.add(faPencilAlt);
 export default class Menu extends Component {
 	render() {
 		const { menuItems } = this.props;
+		const { width } = this.context;
+		const isDesktop = width > 1200;
 
 		const authMenu = menuItems.filter((auth) => {
 			return auth.isAuth === true;
@@ -23,8 +31,6 @@ export default class Menu extends Component {
 								key={item.id}
 								id={item.id}
 								name={item.name}
-								isAuth={item.isAuth}
-								login={item.login}
 								selected={item.selected}
 								isDropdown={item.isDropdown}
 								dropdownItems={item.dropdownItems}
@@ -35,16 +41,26 @@ export default class Menu extends Component {
 
 				<ul className="menu__auth">
 					<div>
-						{authMenu.map((item) => {
+						{authMenu.map((item, index) => {
 							return (
-								<MenuItem
-									key={item.id}
-									id={item.id}
-									name={item.name}
-									isAuth={item.isAuth}
-									login={item.login}
-									selected={item.selected}
-								/>
+								<React.Fragment key={index}>
+									{isDesktop && item.login ? (
+										<FontAwesomeIcon icon={faUserTie} className="menu__auth--login" />
+									) : (
+										isDesktop && (
+											<FontAwesomeIcon icon={faPencilAlt} className="menu__auth--register" />
+										)
+									)}
+
+									<MenuItem
+										key={item.id}
+										id={item.id}
+										name={item.name}
+										isAuth={item.isAuth}
+										login={item.login}
+										selected={item.selected}
+									/>
+								</React.Fragment>
 							);
 						})}
 					</div>
@@ -53,3 +69,5 @@ export default class Menu extends Component {
 		);
 	}
 }
+
+Menu.contextType = MenuContext;

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './scss/Nav.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faShareAlt, faHashtag } from '@fortawesome/free-solid-svg-icons';
 import Menu from '../menu/Menu';
 import MenuContext from '../menu_context/MenuContext';
 
-library.add(faBars);
+library.add(faBars, faShareAlt, faHashtag);
 
 export default class Nav extends Component {
 	constructor(props) {
@@ -290,6 +290,7 @@ export default class Nav extends Component {
 	render() {
 		const { toggleMenu, width } = this.state;
 		const isMobile = width < 1024;
+		const isDesktop = width > 1200;
 
 		return (
 			<MenuContext.Provider value={this.state}>
@@ -333,6 +334,12 @@ export default class Nav extends Component {
 							<div className="nav__main">
 								<div className="nav__menu">
 									<h1 className="nav__title">Székesfehérvári Református Egyházközség</h1>
+									{isDesktop && (
+										<React.Fragment>
+											<FontAwesomeIcon icon={faShareAlt} className="nav__socials" />
+											<FontAwesomeIcon icon={faHashtag} className="nav__socials" />
+										</React.Fragment>
+									)}
 									<Menu menuItems={this.state.menuItems} />
 								</div>
 							</div>
