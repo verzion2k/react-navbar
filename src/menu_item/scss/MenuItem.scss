@@ -87,11 +87,16 @@
 		&:last-of-type &__wrapper:after {
 			display: none;
 		}
+		&--active &__list {
+			width: max-content;
+		}
+		&__auth--active &__list {
+			width: 100%;
+		}
 		&--active &__list,
 		&__auth--active &__list {
 			position: absolute;
-			left: 3%;
-			width: max-content;
+			left: 0;
 			text-align: left;
 			background-color: #fff;
 			z-index: 99;
