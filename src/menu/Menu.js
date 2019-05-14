@@ -1,58 +1,55 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './scss/Menu.scss';
 import MenuItem from '../menu_item/MenuItem';
 
 export default class Menu extends Component {
-    render() {
-        const {menuItems} = this.props;
+	render() {
+		const { menuItems } = this.props;
 
-        const authMenu = menuItems.filter(auth => {
-            return auth.isAuth === true;
-        });
+		const authMenu = menuItems.filter((auth) => {
+			return auth.isAuth === true;
+		});
 
-        const menu = menuItems.filter(item => {
-            return item.isAuth === false;
-        });
+		const menu = menuItems.filter((item) => {
+			return item.isAuth === false;
+		});
 
-        return (
-            <React.Fragment>
-                <ul className='menu'>
-                    {menu.map((item) => {
-                        return (
-                            <MenuItem
-                                key={item.id}
-                                id={item.id}
-                                name={item.name}
-                                isAuth={item.isAuth}
-                                login={item.login}
-                                selected={item.selected}
-                                isDropdown={item.isDropdown}
-                                dropdownItems={item.dropdownItems}
-                            />
-                        )
+		return (
+			<div className="menu__wrapper">
+				<ul className="menu">
+					{menu.map((item) => {
+						return (
+							<MenuItem
+								key={item.id}
+								id={item.id}
+								name={item.name}
+								isAuth={item.isAuth}
+								login={item.login}
+								selected={item.selected}
+								isDropdown={item.isDropdown}
+								dropdownItems={item.dropdownItems}
+							/>
+						);
+					})}
+				</ul>
 
-                    })}
-                </ul>
-
-                <ul className='menu__auth'>
-                    <div>
-                    {authMenu.map((item) => {
-                        return (
-                            <MenuItem
-                                key={item.id}
-                                id={item.id}
-                                name={item.name}
-                                isAuth={item.isAuth}
-                                login={item.login}
-                                selected={item.selected}
-                            />
-                        )
-
-                    })}
-                    </div>
-                </ul>
-            </React.Fragment>
-        )
-
-    }
+				<ul className="menu__auth">
+					<div>
+						{authMenu.map((item) => {
+							return (
+								<MenuItem
+									key={item.id}
+									id={item.id}
+									name={item.name}
+									isAuth={item.isAuth}
+									login={item.login}
+									selected={item.selected}
+								/>
+							);
+						})}
+					</div>
+				</ul>
+			</div>
+		);
+	}
 }

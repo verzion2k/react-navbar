@@ -17,14 +17,11 @@
 
 @media (min-width: 1024px) {
 	.menu {
-		display: flex;
-		flex-flow: row wrap;
+		float: left;
 		&__auth {
-			display: flex;
-			justify-content: flex-end;
+			float: right;
 		}
 		&__auth div {
-			display: flex;
 			position: relative;
 		}
 		&__link {
@@ -33,6 +30,18 @@
 		}
 		&__icon {
 			color: #000;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.menu {
+		padding-left: 5px;
+		&__link {
+			font-size: 13px;
+		}
+		&__wrapper {
+			width: 100%;
 		}
 	}
 }
