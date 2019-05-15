@@ -5,6 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faShareAlt, faHashtag } from '@fortawesome/free-solid-svg-icons';
 import Menu from '../menu/Menu';
 import MenuContext from '../menu_context/MenuContext';
+import styled, { keyframes } from 'styled-components';
+import { bounceInDown } from 'react-animations';
+
+const FadeInAnimation = styled.div`animation: 1s ${keyframes`${bounceInDown}`};`;
 
 library.add(faBars, faShareAlt, faHashtag);
 
@@ -15,7 +19,6 @@ export default class Nav extends Component {
 		this.state = {
 			toggleMenu: false,
 			width: window.innerWidth,
-			showSubItems: false,
 			handleDropdown: this.handleDropdown,
 			handleSubItems: this.handleSubItems,
 			menuItems: [
@@ -259,7 +262,6 @@ export default class Nav extends Component {
 
 		const items = [ ...this.state.menuItems ];
 		const targetKey = e.currentTarget.id;
-		// let subItems = items[targetKey].dropdownItems.filter((dropdown) => dropdown.isDropdown === true)[0].selected;
 
 		if (!items[targetKey].selected) {
 			items[targetKey].selected = true;
@@ -277,8 +279,8 @@ export default class Nav extends Component {
 
 		const subItems = [ ...this.state.menuItems ];
 		const subTargetKey = e.currentTarget.id;
-
 		const subArray = subItems.map((item) => item.dropdownItems && item.dropdownItems);
+
 		const subSelected = subArray.map((item) => {
 			if (item) {
 				return item.map((subItem) => {
@@ -332,9 +334,11 @@ export default class Nav extends Component {
 						</header>
 						{toggleMenu &&
 						isMobile && (
-							<div className="nav__menu">
-								<Menu menuItems={this.state.menuItems} />
-							</div>
+							<FadeInAnimation>
+								<div className="nav__menu">
+									<Menu menuItems={this.state.menuItems} />
+								</div>
+							</FadeInAnimation>
 						)}
 					</main>
 				) : (
