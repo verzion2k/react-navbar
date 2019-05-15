@@ -7,7 +7,7 @@ import MenuContext from '../menu_context/MenuContext';
 export default class MenuItem extends Component {
 	render() {
 		const { isDropdown, isAuth, name, dropdownItems, login, id, selected } = this.props;
-		const { showSubItems, handleDropdown, handleSubItems, width } = this.context;
+		const { handleDropdown, handleSubItems, width } = this.context;
 
 		const isMobile = width < 1024;
 
@@ -47,25 +47,39 @@ export default class MenuItem extends Component {
 							return (
 								<li
 									className={
-										item.isDropdown && showSubItems ? (
+										item.isDropdown && item.selected ? (
 											'menu__item__dropdown--active'
 										) : (
 											'menu__item__dropdown'
 										)
 									}
-									onClick={item.isDropdown && isMobile ? handleSubItems : undefined}
 									onMouseEnter={item.isDropdown && !isMobile ? handleSubItems : undefined}
 									onMouseLeave={item.isDropdown && !isMobile ? handleSubItems : undefined}
 									key={item.id}
 									selected={item.selected}
 									id={item.id}
 								>
-									<a className="menu__link"> {item.name} </a> {item.isDropdown && <Icon />}
-									{showSubItems && (
+									<a
+										className="menu__link"
+										onClick={item.isDropdown && isMobile ? handleSubItems : undefined}
+										selected={item.selected}
+										id={item.id}
+									>
+										{' '}
+										{item.name}{' '}
+									</a>{' '}
+									{item.isDropdown && <Icon />}
+									{item.selected &&
+									item.isDropdown && (
 										<ul className="menu__item__sub--wrapper">
 											{item.subItems &&
 												item.subItems.map((item) => {
-													return <li className="menu__item__sub"> {item.name} </li>;
+													return (
+														<li className="menu__item__sub" key={item.id}>
+															{' '}
+															{item.name}{' '}
+														</li>
+													);
 												})}
 										</ul>
 									)}
