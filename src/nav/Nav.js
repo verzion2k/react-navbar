@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './scss/Nav.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faShareAlt, faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Menu from '../menu/Menu';
 import MenuContext from '../menu_context/MenuContext';
 import styled, { keyframes } from 'styled-components';
@@ -10,7 +11,7 @@ import { bounceInDown } from 'react-animations';
 
 const FadeInAnimation = styled.div`animation: 1s ${keyframes`${bounceInDown}`};`;
 
-library.add(faBars, faShareAlt, faHashtag);
+library.add(faBars, faFacebook, faTwitter);
 
 export default class Nav extends Component {
 	constructor(props) {
@@ -357,8 +358,8 @@ export default class Nav extends Component {
 									<h1 className="nav__title">Székesfehérvári Református Egyházközség</h1>
 									{isDesktop && (
 										<React.Fragment>
-											<FontAwesomeIcon icon={faShareAlt} className="nav__socials" />
-											<FontAwesomeIcon icon={faHashtag} className="nav__socials" />
+											<FontAwesomeIcon icon={faFacebook} className="nav__socials" />
+											<FontAwesomeIcon icon={faTwitter} className="nav__socials" />
 										</React.Fragment>
 									)}
 									<Menu menuItems={this.state.menuItems} />
