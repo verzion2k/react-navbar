@@ -23,15 +23,15 @@ export default class MenuItem extends Component {
 		return (
 			<li
 				className={menuItemClass}
-				onMouseEnter={!isMobile ? handleDropdown : undefined}
-				onMouseLeave={!isMobile ? handleDropdown : undefined}
+				onMouseEnter={!isMobile && isAuth ? undefined : !isMobile ? handleDropdown : undefined}
+				onMouseLeave={!isMobile && isAuth ? undefined : !isMobile ? handleDropdown : undefined}
 				id={id}
 				selected={selected}
 			>
 				<div className={isAuth ? 'menu__item__wrapper--auth' : 'menu__item__wrapper'}>
 					<a
 						className="menu__link"
-						onClick={isMobile ? handleDropdown : undefined}
+						onClick={!isMobile && isAuth ? handleDropdown : isMobile ? handleDropdown : undefined}
 						id={id}
 						selected={selected}
 					>

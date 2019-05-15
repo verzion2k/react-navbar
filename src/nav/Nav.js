@@ -263,11 +263,22 @@ export default class Nav extends Component {
 
 		const items = [ ...this.state.menuItems ];
 		const targetKey = e.currentTarget.id;
+		const selectedItems = items.filter((item) => item.selected === true);
 
-		if (!items[targetKey].selected) {
-			items[targetKey].selected = true;
-		} else {
+		if (items[targetKey].selected) {
 			items[targetKey].selected = false;
+		} else if (!items[targetKey].selected && selectedItems.length > 0) {
+			selectedItems.map((item) => {
+				if (item.isAuth === false) {
+					item.dropdownItems.map((subItem) => (subItem.selected = false));
+					item.selected = false;
+				} else {
+					item.selected = false;
+				}
+			});
+			items[targetKey].selected = true;
+		} else if (!items[targetKey].selected) {
+			items[targetKey].selected = true;
 		}
 
 		this.setState({

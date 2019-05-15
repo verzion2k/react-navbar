@@ -45,7 +45,6 @@
 		margin: 20px;
 	}
 	&__sub--wrapper {
-		box-shadow: 0 10px 12px -6px rgba(0, 0, 0, .175);
 		list-style-type: none;
 	}
 	&__wrapper {
@@ -114,6 +113,7 @@
 			top: 0%;
 			background-color: rgb(237, 237, 237);
 			list-style-type: none;
+			box-shadow: 0 10px 12px -6px rgba(0, 0, 0, .175);
 		}
 		&__sub {
 			cursor: pointer;
